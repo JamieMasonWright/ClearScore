@@ -21,16 +21,14 @@ constructor(
 ) : ViewModel() {
 
 
-    init {
-        //fetchScore()
-    }
-
-
     //state of the score
     private val _state = MutableLiveData<ScoreState>()
     val state: LiveData<ScoreState>
         get() = _state
 
+    init {
+        fetchScore()
+    }
 
     //invoke the fetch score use case
     fun fetchScore() {
@@ -60,12 +58,5 @@ constructor(
             }
 
         }.launchIn(viewModelScope)
-    }
-
-    //calculate angle
-    fun arcSize(score:Int, maxScore:Int): Float{
-        val ratio = score / maxScore
-        val angle = ratio * 360
-        return angle.toFloat()
     }
 }

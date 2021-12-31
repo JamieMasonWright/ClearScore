@@ -76,4 +76,5 @@ class ScoreFragment : Fragment() {
             arcAngle = 80f
         }
     }
+
 }

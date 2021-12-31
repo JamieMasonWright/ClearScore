@@ -10,6 +10,8 @@ import android.util.AttributeSet
 import android.view.View
 import com.jj.clearscore.R
 import com.jj.clearscore.common.Constants
+import java.math.RoundingMode
+import java.text.DecimalFormat
 import kotlin.properties.Delegates
 
 class ScoreDonut : View {
@@ -109,6 +111,8 @@ class ScoreDonut : View {
         viewWidth = MeasureSpec.getSize(widthMeasureSpec)
         viewHeight = MeasureSpec.getSize(heightMeasureSpec)
         size = viewWidth
+        //adjust angle
+        arcAngle = angle(score, maxScore)
     }
 
     @JvmName("setValue1")
@@ -216,6 +220,25 @@ class ScoreDonut : View {
         val yPos = (((height / 1.5f) + (height / 4) * 0) - (paint.descent() + paint.ascent()) / 2)
 
         canvas.drawText(Constants.SCORE_OUTRO + maxScore, xPos, yPos, paint)
+    }
+
+    //calculate angle
+    private fun angle(score: Int, maxScore: Int): Float {
+        val ratio = score.toDouble() / maxScore
+        val arcAng = ratio * 360
+
+        //confirm score <= maxScore
+        return if(score <= maxScore)
+            arcAng.toFloat().roundNumber()
+        else
+            0.0f.roundNumber()
+    }
+
+    //round number to 2dp
+    private fun Float.roundNumber() : Float{
+        val format = DecimalFormat("#.##")
+        format.roundingMode = RoundingMode.CEILING
+        return format.format(this).toFloat()
     }
 
 }
