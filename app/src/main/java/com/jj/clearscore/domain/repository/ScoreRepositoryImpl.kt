@@ -11,6 +11,4 @@ class ScoreRepositoryImpl
     override suspend fun fetchCreditReport(): CreditReportDto {
         return api.fetchScore()
     }
-
-
 }

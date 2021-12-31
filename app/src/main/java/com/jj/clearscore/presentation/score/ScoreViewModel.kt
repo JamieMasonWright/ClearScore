@@ -33,7 +33,7 @@ constructor(
 
 
     //invoke the fetch score use case
-    public fun fetchScore() {
+    fun fetchScore() {
         //call use case
         fetchScoreUseCase().onEach { resource ->
             when (resource) {
@@ -62,5 +62,10 @@ constructor(
         }.launchIn(viewModelScope)
     }
 
-
+    //calculate angle
+    fun arcSize(score:Int, maxScore:Int): Float{
+        val ratio = score / maxScore
+        val angle = ratio * 360
+        return angle.toFloat()
+    }
 }

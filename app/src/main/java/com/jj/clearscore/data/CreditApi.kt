@@ -7,6 +7,6 @@ interface CreditAPI {
 
     //retrieve data from endpoint
     @GET("/endpoint.json")
-    suspend fun fetchScore() : CreditReportDto
+    suspend fun fetchScore(): CreditReportDto
 
 }

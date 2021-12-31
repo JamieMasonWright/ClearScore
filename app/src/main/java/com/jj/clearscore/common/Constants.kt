@@ -12,4 +12,8 @@ object Constants {
     const val NETWORK_IO_ERROR = "Could not reach server! Check your internet connection"
     //waiting messages
     const val WAIT = "Please wait as we calculate your score"
+
+    //Score texts
+    const val SCORE_INTRO = "Your credit score is"
+    const val SCORE_OUTRO = "out of "
 }

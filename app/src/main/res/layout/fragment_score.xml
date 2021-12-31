@@ -1,18 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/txtScore"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="327 / 700"
-        android:textSize="24sp"
+    <FrameLayout
+        android:id="@+id/infoFrame"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!--Loading View-->
+        <LinearLayout
+            android:id="@+id/progress"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dip" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="@string/please_wait_calculating_your_score"
+                android:textSize="17sp" />
+
+        </LinearLayout>
+
+        <!--Score View-->
+        <com.jj.clearscore.common.views.ScoreDonut
+            android:id="@+id/donutScore"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            app:arcAngle="264"
+            app:maxScore="0"
+            app:score="0" />
+
+        <!--Error View-->
+        <LinearLayout
+            android:id="@+id/error"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dip"
+                app:srcCompat="@drawable/ic_baseline_error_24" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txtError"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="@string/there_was_an_unexpected_error"
+                android:textSize="17sp" />
+
+        </LinearLayout>
+
+    </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

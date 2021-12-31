@@ -18,18 +18,18 @@ class FetchScoreUseCase
 
         try {
             //start loading
-            emit(Resource.Loading<CreditScore>())
+            emit(Resource.Loading())
             //get score from repo
             val score = repository.fetchCreditReport().creditReportInfo.toCreditScore()
             //success
-            emit(Resource.Success<CreditScore>(score))
+            emit(Resource.Success(score))
 
         }catch (e: HttpException){
             //unexpected error
-            emit(Resource.Error<CreditScore>(e.localizedMessage ?: Constants.UNEXPECTED))
+            emit(Resource.Error(e.localizedMessage ?: Constants.UNEXPECTED))
         }catch (e: IOException){
             //network error
-            emit(Resource.Error<CreditScore>(Constants.NETWORK_IO_ERROR))
+            emit(Resource.Error(Constants.NETWORK_IO_ERROR))
         }
 
     }

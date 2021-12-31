@@ -34,12 +34,12 @@ data class CreditReportInfo(
     val status: String
 )
 
-    //function to convert credit report info to actual credit score
-    fun CreditReportInfo.toCreditScore() : CreditScore {
-        return CreditScore(
-            score = score,
-            maxScore = maxScoreValue
-        )
-    }
+//function to convert credit report info to actual credit score
+fun CreditReportInfo.toCreditScore(): CreditScore {
+    return CreditScore(
+        score = score,
+        maxScore = maxScoreValue
+    )
+}
 
 
